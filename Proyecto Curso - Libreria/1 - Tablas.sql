@@ -8,14 +8,16 @@ CREATE TABLE IF NOT EXISTS books (
 	price DOUBLE(6,2) NOT NULL DEFAULT 10.0,
 	sellable TINYINT(1) DEFAULT 1,
 	copies INTEGER NOT NULL DEFAULT 1,
-	description TEXT
+	description TEXT,
+	FOREIGN KEY (author_id) REFERENCES authors(author_id)
 );
 
 -- Authors
 CREATE TABLE IF NOT EXISTS authors (
 	author_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(100) NOT NULL,
-	nationality VARCHAR(3)
+	nationality VARCHAR(3),
+  	UNIQUE KEY `uniq_author` (`name`)
 );
 
 -- Clients
