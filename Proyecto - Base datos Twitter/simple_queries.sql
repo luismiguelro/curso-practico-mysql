@@ -25,3 +25,17 @@ GROUP BY f.following_id
 ORDER BY followers DESC
 LIMIT 3
 _______________________________________________________
+
+SELECT 
+    u.user_id,
+    u.user_handle,
+    f.following_id,
+    COUNT(f.follower_id) AS followers
+FROM
+    followers f
+        INNER JOIN
+    users u ON u.user_id = f.following_id
+GROUP BY f.following_id
+ORDER BY followers DESC
+LIMIT 3;
+_______________________________________________________

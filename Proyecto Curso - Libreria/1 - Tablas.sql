@@ -42,3 +42,18 @@ CREATE TABLE IF NOT EXISTS operations(
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     finished TINYINT(1) NOT NULL
 );
+
+-- Tweets
+CREATE TABLE tweets (
+    tweet_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    tweet_text VARCHAR(280) NOT NULL,
+    num_likes INT DEFAULT 0,
+    num_retweets INT DEFAULT 0,
+    num_comments INT DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id)
+        REFERENCES users (user_id),
+    PRIMARY KEY (tweet_id)
+)
