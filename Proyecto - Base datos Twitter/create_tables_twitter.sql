@@ -29,3 +29,14 @@ CREATE TABLE followers (
 ALTER TABLE followers
 add constraint check_follower_id
 check(follower_id <> following_id);
+
+-- Likes twitter
+CREATE TABLE tweet_likes (
+    user_id INT NOT NULL,
+    tweet_id INT NOT NULL,
+    FOREIGN KEY (user_id)
+        REFERENCES users (user_id),
+    FOREIGN KEY (tweet_id)
+        REFERENCES tweets (tweet_id),
+    PRIMARY KEY (user_id , tweet_id)
+)
